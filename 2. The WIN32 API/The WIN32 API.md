@@ -1,3 +1,4 @@
+# The WIN32 API
 ## Introduction
 When dealing with process injection, or interacting with processes on Windows in general, we'll have to make use of the **WIN32 API**. In this post we'll take a brief look at what this API is and what it can do. We'll also look at some specific API calls that we can use when performing process injection.
 
@@ -9,7 +10,7 @@ Generally, every single process that runs on a Windows OS is using many of these
 
 An important concept to understand is that the WIN32 API provides a gateway of sorts to functions in an OS that are performed in **kernel-mode**. Without diving into the details, kernel mode (as opposed to user-mode) is a privileged execution mode in an operating system where code has direct and unrestricted access to system resources. Obviously access to this mode is restricted to a very limited set of code, mostly part of the OS itself. User-mode processes can make use of kernel-mode functionality by using API calls like the ones in the WIN32 API. 
 
->[!info] The WIN32 API does not actually run in  **kernel-mode** yet, there's still some more steps. We'll dive into that when we look at *NTAPI Injection*.
+>The WIN32 API does not actually run in  **kernel-mode** yet, there's still some more steps. We'll dive into that when we look at *NTAPI Injection*.
 
 ## Some useful WIN32 API functions
 Here I'll list some of the API functions we'll be using when performing process injection. For a very detailed list of all of the important WIN32 API functions and how they might be used by malware, I highly recommend checking out [MalAPI.io](https://malapi.io). There is also the [Windows API MSDN](https://learn.microsoft.com/en-us/windows/win32/apiindex/windows-api-list) by Windows themselves.
