@@ -1,7 +1,7 @@
 ## Introduction
 Before we can get our hands dirty with process injection, we first need to know what a process is and how they work.
 
->[!info] Later in this post we'll be using [x64dbg]([https://x64dbg.com/](https://x64dbg.com/)) to view the internals of an ongoing process, so make sure you've got it installed (or any other debugging tool).
+>Later in this post we'll be using [x64dbg]([https://x64dbg.com/](https://x64dbg.com/)) to view the internals of an ongoing process, so make sure you've got it installed (or any other debugging tool).
 
 ## Abstract definition
 
@@ -19,11 +19,11 @@ Even more so, an executable image is different from **source code**. If you're l
 
 We now know that a process is a region of memory on a computer that contains machine instructions and data. The image below explains (in a somewhat simplified way) how this memory is partitioned.
 
-![[Pasted image 20250305124828.png]]
+<img width="457" alt="image" src="https://github.com/user-attachments/assets/443c5e1b-3368-47fe-b1d0-f0db31377701" />
 
 The bottom section called **code** contains the machine code instructions that the CPU has to execute. These were stored in the program image. The "data" and "stack" sections contain the aforementioned data like variables.
 
->[!info] This is a simplified explanation of the memory layout of a process, the real thing is a lot more complex.
+>This is a simplified explanation of the memory layout of a process, the real thing is a lot more complex.
 
 Let's take a look at an actual ongoing process on our machine, to see what's happening in practice. To this end, I'll create a very simple program in `C`, although you could just pick any process you can find in your process explorer.
 
@@ -40,7 +40,8 @@ int main()
 
 After compiling this program we'll open it up in `x64dbg`. We're met with the following:
 
-![[Pasted image 20250305125359.png]]
+<img width="770" alt="Pasted image 20250305125359" src="https://github.com/user-attachments/assets/503abed9-7dbe-4dfe-b8dc-64c28e2ea3d1" />
+
 
 If you've never looked at the inside of a process before, the amount of information on your screen can be overwhelming. `x64dbg` is an incredibly complex program and by no means should you know what's going on in every part of it. For now, we're only trying to get an _idea_ of what a process looks like under the hood. 
 
