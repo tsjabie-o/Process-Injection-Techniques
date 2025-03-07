@@ -93,16 +93,20 @@ WriteProcessMemory(
 
 We supply the handle to the process, the address of our newly created buffer, the payload and the size of the payload. 
 
-Let's see our work until now in action! As an example I'll use open up the Windows Calculator and use it as our target process, since there won't be any problem if anything goes wrong. 
+Let's see our work until now in action! As an example I'll use open up the Windows Calculator and use it as our target process, since there won't be any problem if anything goes wrong.
+
 ![Screenshot 2025-03-05 203252](https://github.com/user-attachments/assets/bdf0bf1d-f3d4-4efc-9fe6-bcea934090ac)
 
-We supply our program with the right PID and execute. 
+We supply our program with the right PID and execute.
+
 ![Screenshot 2025-03-05 203827](https://github.com/user-attachments/assets/ef3f15fc-57f9-4089-aa2d-44c5851764a8)
 
 Immediately we see that we successfully created and wrote to a new memory region in the calculator's process memory. 
+
 ![Screenshot 2025-03-05 203912](https://github.com/user-attachments/assets/0eb27a79-cccf-444f-a2f9-cfd1454a0d2f)
 
 The address of that buffer is `0x292c9950000`. Let's open up `x64dbg`, attach it to our calculator process and inspect the memory at this address.
+
 ![Screenshot 2025-03-05 204024](https://github.com/user-attachments/assets/88bcf491-e17d-4b3e-89b4-e2e75c4aa7c0)
 
 The shellcode I created starts with `FC 48 83 E4 F0 ...`. And indeed, we find those exact bytes at that specific address in the calculators process memory. We've successfully altered another process' memory!
