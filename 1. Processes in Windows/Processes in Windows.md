@@ -49,6 +49,9 @@ Pay attention to the largest, upper-left window. Each of the lines you see there
 
 `x64dbg` is kind enough to automatically set a breakpoint at the start of the main function. This means that the highlighted line you see, is the instruction that the CPU is about to execute right now. It also means that we're currently looking at the part in memory that stores the instructions of this process. As I stated before though, a process consists of more than just instructions. Head over to the "Symbols" tab and click on the `processexplainer.exe` (or whatever your `.exe` file is called). A new window to the right should open up. In the search bar below it, type "Hello world". You should see our "Hello world" string saved in memory. Right click this line and click on "follow in Dump" to see that actual bytes of this variable stored between a myriad of other information.
 
+![image](https://github.com/user-attachments/assets/0fb02fc5-8352-44d1-964b-73555ca55ddd)
+
+
 ## Injection
 
 Now that we have a better understanding of the internals of a process, let's consider what it means to *inject* into a process:
