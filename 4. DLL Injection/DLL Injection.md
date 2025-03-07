@@ -141,10 +141,12 @@ WriteProcessMemory(
 Let's check if this all went according to plan. In my case, the filename was `C:\\Users\\xoort\\Desktop\\Projects\\Crow stuff\\InjectDLL\\x64\\Release\\InjectDLL.dll`
 
 Address in the memory space of the calculator app that the DLL filename was written to:
+
 ![Pasted image 20250307101537](https://github.com/user-attachments/assets/13452074-1b42-4038-8ec2-7a7d8d7f3a88)
 
 
 That address inspected with `x64dbg`:
+
 ![Pasted image 20250307101655](https://github.com/user-attachments/assets/01a20824-68c9-4f71-826f-0db0ae37dd2f)
 
 
