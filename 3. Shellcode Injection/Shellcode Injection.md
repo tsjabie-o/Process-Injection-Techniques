@@ -1,3 +1,4 @@
+# Shellcode Injection
 ## Introduction
 Finally, we'll be diving into some actual process injection. More specifically, **shellcode** injection. This is generally seen as the most simple form of process injection. 
 
@@ -27,7 +28,7 @@ unsigned char payload[] =
 
 Cool, let's start crafting some source code that performs Process Injection.
 
->[!info] I won't explain every line of code since that would make this post way too long. For information on how the WIN32 API works and what the different arguments mean, refer to the sources I mentioned in the post about the API.
+>I won't explain every detail of every line of code since that would make this post way too long. For information on how the WIN32 API works and what the different arguments mean, refer to the sources I mentioned in the post about the API.
    
 ## Getting a handle
 Using the WIN32 API we'll start by getting a so-called handle to the target process. This handle is what will identify the process to the API from here on out. To get this handle, we'll need to supply the **Process Identifier (PID)**, which we can find in a task manager and input as an argument.
@@ -93,13 +94,17 @@ WriteProcessMemory(
 We supply the handle to the process, the address of our newly created buffer, the payload and the size of the payload. 
 
 Let's see our work until now in action! As an example I'll use open up the Windows Calculator and use it as our target process, since there won't be any problem if anything goes wrong. 
-![[Screenshot 2025-03-05 203252.png]]
+![Screenshot 2025-03-05 203252](https://github.com/user-attachments/assets/bdf0bf1d-f3d4-4efc-9fe6-bcea934090ac)
+
 We supply our program with the right PID and execute. 
-![[Screenshot 2025-03-05 203827.png]]
+![Screenshot 2025-03-05 203827](https://github.com/user-attachments/assets/ef3f15fc-57f9-4089-aa2d-44c5851764a8)
+
 Immediately we see that we successfully created and wrote to a new memory region in the calculator's process memory. 
-![[Screenshot 2025-03-05 203912.png]]
+![Screenshot 2025-03-05 203912](https://github.com/user-attachments/assets/0eb27a79-cccf-444f-a2f9-cfd1454a0d2f)
+
 The address of that buffer is `0x292c9950000`. Let's open up `x64dbg`, attach it to our calculator process and inspect the memory at this address.
-![[Screenshot 2025-03-05 204024.png]]
+![Screenshot 2025-03-05 204024](https://github.com/user-attachments/assets/88bcf491-e17d-4b3e-89b4-e2e75c4aa7c0)
+
 The shellcode I created starts with `FC 48 83 E4 F0 ...`. And indeed, we find those exact bytes at that specific address in the calculators process memory. We've successfully altered another process' memory!
 
 ## Executing the injected shellcode
